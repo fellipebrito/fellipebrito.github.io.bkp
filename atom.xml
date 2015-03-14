@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Fellipe Brito]]></title>
+  <link href="http://devlandia.github.io/fellipebrito-blog/atom.xml" rel="self"/>
+  <link href="http://devlandia.github.io/fellipebrito-blog/"/>
+  <updated>2015-03-14T00:11:54+00:00</updated>
+  <id>http://devlandia.github.io/fellipebrito-blog/</id>
+  <author>
+    <name><![CDATA[]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Example]]></title>
+    <link href="http://devlandia.github.io/fellipebrito-blog/blog/2015/03/11/example/"/>
+    <updated>2015-03-11T18:54:38+00:00</updated>
+    <id>http://devlandia.github.io/fellipebrito-blog/blog/2015/03/11/example</id>
+    <content type="html"><![CDATA[<h2>This is example for posts</h2>
+]]></content>
+  </entry>
+  
+</feed>
