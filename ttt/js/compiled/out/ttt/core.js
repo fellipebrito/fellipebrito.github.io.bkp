@@ -1,22 +1,23 @@
 // Compiled by ClojureScript 0.0-2850 {}
 goog.provide('ttt.core');
 goog.require('cljs.core');
-goog.require('cljs.core.async');
-goog.require('clojure.string');
 goog.require('om.dom');
-goog.require('om.core');
 goog.require('figwheel.client');
+goog.require('cljs.core.async');
+goog.require('clojure.data');
+goog.require('om.core');
+goog.require('clojure.string');
+cljs.core.enable_console_print_BANG_.call(null);
 ttt.core.new_board = (function new_board(){
 return "---------";
 });
 ttt.core.matches = (function matches(matcher,board){
-return cljs.core.map.call(null,cljs.core.first,cljs.core.filter.call(null,(function (p1__19552_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.second.call(null,p1__19552_SHARP_),matcher);
+return cljs.core.map.call(null,cljs.core.first,cljs.core.filter.call(null,(function (p1__23217_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.second.call(null,p1__23217_SHARP_),matcher);
 }),cljs.core.map_indexed.call(null,cljs.core.vector,board)));
 });
-ttt.core.win_QMARK_ = (function win_QMARK_(board){
 ttt.core.winners = new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(3),(6)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(1),(4),(7)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(2),(5),(8)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(4),(8)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(2),(4),(6)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(1),(2)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(3),(4),(5)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(6),(7),(8)], null)], null);
-
+ttt.core.win_QMARK_ = (function win_QMARK_(board){
 return cljs.core.some.call(null,cljs.core.true_QMARK_,cljs.core.into.call(null,cljs.core.map.call(null,(function (winner){
 return cljs.core.every_QMARK_.call(null,cljs.core.set.call(null,ttt.core.matches.call(null,"x",board)),winner);
 }),ttt.core.winners),cljs.core.map.call(null,(function (winner){
@@ -28,7 +29,72 @@ return ((cljs.core.count.call(null,ttt.core.matches.call(null,"-",board)) < (3))
 return ttt.core.win_QMARK_.call(null,clojure.string.replace.call(null,board,"-",x));
 }),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["x","o"], null)))));
 });
-ttt.core.app_state = cljs.core.atom.call(null,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"player","player",-97687400),cljs.core.rand_nth.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["x","o"], null)),new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.new_board.call(null)], null));
+ttt.core.app_state = cljs.core.atom.call(null,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"player","player",-97687400),"x",new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.new_board.call(null)], null));
+ttt.core.robot_move = (function robot_move(board){
+var x_moves = cljs.core.vec.call(null,ttt.core.matches.call(null,"x",board));
+var o_moves = cljs.core.vec.call(null,ttt.core.matches.call(null,"o",board));
+var possible_moves = cljs.core.vec.call(null,ttt.core.matches.call(null,"-",board));
+var corners_and_center = cljs.core.vec.call(null,cljs.core.filter.call(null,((function (x_moves,o_moves,possible_moves){
+return (function (x){
+return cljs.core.some.call(null,new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 5, [(0),null,(4),null,(6),null,(2),null,(8),null], null), null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [x], null));
+});})(x_moves,o_moves,possible_moves))
+,possible_moves));
+if(((6) < cljs.core.count.call(null,possible_moves))){
+return cljs.core.rand_nth.call(null,corners_and_center);
+} else {
+var win_move = cljs.core.filter.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
+return (function (p1__23218_SHARP_){
+return !((p1__23218_SHARP_ == null));
+});})(x_moves,o_moves,possible_moves,corners_and_center))
+,cljs.core.map.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
+return (function (y){
+return cljs.core.some.call(null,y,possible_moves);
+});})(x_moves,o_moves,possible_moves,corners_and_center))
+,cljs.core.filter.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
+return (function (p1__23219_SHARP_){
+return !((p1__23219_SHARP_ == null));
+});})(x_moves,o_moves,possible_moves,corners_and_center))
+,cljs.core.map.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
+return (function (x){
+if(cljs.core._EQ_.call(null,(1),cljs.core.count.call(null,cljs.core.second.call(null,clojure.data.diff.call(null,cljs.core.set.call(null,o_moves),cljs.core.set.call(null,x)))))){
+return cljs.core.second.call(null,clojure.data.diff.call(null,cljs.core.set.call(null,o_moves),cljs.core.set.call(null,x)));
+} else {
+return null;
+}
+});})(x_moves,o_moves,possible_moves,corners_and_center))
+,ttt.core.winners))));
+var block_move = cljs.core.filter.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
+return (function (p1__23220_SHARP_){
+return !((p1__23220_SHARP_ == null));
+});})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
+,cljs.core.map.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
+return (function (y){
+return cljs.core.some.call(null,y,possible_moves);
+});})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
+,cljs.core.filter.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
+return (function (p1__23221_SHARP_){
+return !((p1__23221_SHARP_ == null));
+});})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
+,cljs.core.map.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
+return (function (x){
+if(cljs.core._EQ_.call(null,(1),cljs.core.count.call(null,cljs.core.second.call(null,clojure.data.diff.call(null,cljs.core.set.call(null,x_moves),cljs.core.set.call(null,x)))))){
+return cljs.core.second.call(null,clojure.data.diff.call(null,cljs.core.set.call(null,x_moves),cljs.core.set.call(null,x)));
+} else {
+return null;
+}
+});})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
+,ttt.core.winners))));
+if(((0) < cljs.core.count.call(null,win_move))){
+return cljs.core.rand_nth.call(null,win_move);
+} else {
+if(((0) < cljs.core.count.call(null,block_move))){
+return cljs.core.rand_nth.call(null,block_move);
+} else {
+return cljs.core.rand_nth.call(null,possible_moves);
+}
+}
+}
+});
 ttt.core.move = (function move(board,place,player,human_QMARK_){
 var board_after_human = ((cljs.core.not_EQ_.call(null,"-",cljs.core.get.call(null,board,place)))?(function (){
 alert("Invalid move");
@@ -36,13 +102,10 @@ alert("Invalid move");
 return board;
 })()
 :(function (){var board_after_move = [cljs.core.str(cljs.core.subs.call(null,board,(0),place)),cljs.core.str(player),cljs.core.str(cljs.core.subs.call(null,board,(place + (1))))].join('');
-if(cljs.core.truth_(ttt.core.win_QMARK_.call(null,board_after_move))){
-alert([cljs.core.str("Player ["),cljs.core.str(player),cljs.core.str("] wins!")].join(''));
-
-return cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.new_board.call(null));
-} else {
 if(ttt.core.draw_QMARK_.call(null,board_after_move)){
 alert([cljs.core.str("It's a Draw!")].join(''));
+
+cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"player","player",-97687400),"x");
 
 return cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.new_board.call(null));
 } else {
@@ -50,113 +113,138 @@ cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.
 
 return cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"board","board",-1907017633),board_after_move);
 }
-}
 })());
 if(cljs.core.truth_(human_QMARK_)){
-return move.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(board_after_human),cljs.core.rand_nth.call(null,cljs.core.vec.call(null,ttt.core.matches.call(null,"-",new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(board_after_human)))),((cljs.core._EQ_.call(null,"x",player))?"o":"x"),false);
+if(cljs.core.not.call(null,ttt.core.win_QMARK_.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(board_after_human)))){
+return move.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(board_after_human),ttt.core.robot_move.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(board_after_human)),((cljs.core._EQ_.call(null,"x",player))?"o":"x"),false);
 } else {
 return board_after_human;
 }
+} else {
+return null;
+}
+});
+ttt.core.restart = (function restart(data){
+cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"player","player",-97687400),((cljs.core._EQ_.call(null,"x",new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data)))?"o":"x"));
+
+var board = ((cljs.core._EQ_.call(null,"x",new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data)))?(function (){
+cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"player","player",-97687400),"x");
+
+return cljs.core.rand_nth.call(null,new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, ["o--------","------o--","----o----","--o------","--------o"], null));
+})()
+:ttt.core.new_board.call(null));
+cljs.core.println.call(null,board);
+
+return cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"board","board",-1907017633),board);
+});
+ttt.core.show_board = (function show_board(owner,data){
+if(cljs.core.truth_(ttt.core.win_QMARK_.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data)))){
+return React.DOM.div(null,React.DOM.div({"className": "alert"},React.DOM.div({"className": "finalMessage"},[cljs.core.str(((cljs.core._EQ_.call(null,"x",new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data)))?cljs.core.rand_nth.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["What a shame!","SuperBot wins!","It was easy!"], null)):cljs.core.rand_nth.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Adrian, we did it!","This is happiness!","Sweet!"], null))))].join('')),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.restart.call(null,data));
+}), "className": "restart"},"Play Again!")),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(0),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(0),(1))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(1),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(1),(2))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(2),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(2),(3))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(3),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(3),(4))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(4),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(4),(5))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(5),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(5),(6))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(6),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(6),(7))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(7),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(7),(8))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(8),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(8),(9))));
+} else {
+return React.DOM.div(null,React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(0),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(0),(1))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(1),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(1),(2))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(2),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(2),(3))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(3),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(3),(4))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(4),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(4),(5))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(5),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(5),(6))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(6),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(6),(7))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(7),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(7),(8))),React.DOM.button({"onClick": (function (){
+return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(8),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
+})},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(8),(9))));
+}
 });
 ttt.core.game = (function game(data,owner){
-if(typeof ttt.core.t19558 !== 'undefined'){
+if(typeof ttt.core.t23227 !== 'undefined'){
 } else {
 
 /**
 * @constructor
 */
-ttt.core.t19558 = (function (owner,data,game,meta19559){
+ttt.core.t23227 = (function (owner,data,game,meta23228){
 this.owner = owner;
 this.data = data;
 this.game = game;
-this.meta19559 = meta19559;
+this.meta23228 = meta23228;
 this.cljs$lang$protocol_mask$partition1$ = 0;
 this.cljs$lang$protocol_mask$partition0$ = 393216;
 })
-ttt.core.t19558.prototype.om$core$IRenderState$ = true;
+ttt.core.t23227.prototype.om$core$IRenderState$ = true;
 
-ttt.core.t19558.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__19561){
+ttt.core.t23227.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__23230){
 var self__ = this;
-var map__19562 = p__19561;
-var map__19562__$1 = ((cljs.core.seq_QMARK_.call(null,map__19562))?cljs.core.apply.call(null,cljs.core.hash_map,map__19562):map__19562);
+var map__23231 = p__23230;
+var map__23231__$1 = ((cljs.core.seq_QMARK_.call(null,map__23231))?cljs.core.apply.call(null,cljs.core.hash_map,map__23231):map__23231);
 var ___$1 = this;
-return React.DOM.div(null,React.DOM.button({"onClick": ((function (___$1,map__19562,map__19562__$1){
-return (function (){
-return om.core.set_state_BANG_.call(null,self__.owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data))].join(''),(0),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(self__.data),true));
-});})(___$1,map__19562,map__19562__$1))
-},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data),(0),(1))),React.DOM.button({"onClick": ((function (___$1,map__19562,map__19562__$1){
-return (function (){
-return om.core.set_state_BANG_.call(null,self__.owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data))].join(''),(1),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(self__.data),true));
-});})(___$1,map__19562,map__19562__$1))
-},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data),(1),(2))),React.DOM.button({"onClick": ((function (___$1,map__19562,map__19562__$1){
-return (function (){
-return om.core.set_state_BANG_.call(null,self__.owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data))].join(''),(2),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(self__.data),true));
-});})(___$1,map__19562,map__19562__$1))
-},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data),(2),(3))),React.DOM.button({"onClick": ((function (___$1,map__19562,map__19562__$1){
-return (function (){
-return om.core.set_state_BANG_.call(null,self__.owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data))].join(''),(3),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(self__.data),true));
-});})(___$1,map__19562,map__19562__$1))
-},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data),(3),(4))),React.DOM.button({"onClick": ((function (___$1,map__19562,map__19562__$1){
-return (function (){
-return om.core.set_state_BANG_.call(null,self__.owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data))].join(''),(4),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(self__.data),true));
-});})(___$1,map__19562,map__19562__$1))
-},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data),(4),(5))),React.DOM.button({"onClick": ((function (___$1,map__19562,map__19562__$1){
-return (function (){
-return om.core.set_state_BANG_.call(null,self__.owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data))].join(''),(5),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(self__.data),true));
-});})(___$1,map__19562,map__19562__$1))
-},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data),(5),(6))),React.DOM.button({"onClick": ((function (___$1,map__19562,map__19562__$1){
-return (function (){
-return om.core.set_state_BANG_.call(null,self__.owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data))].join(''),(6),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(self__.data),true));
-});})(___$1,map__19562,map__19562__$1))
-},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data),(6),(7))),React.DOM.button({"onClick": ((function (___$1,map__19562,map__19562__$1){
-return (function (){
-return om.core.set_state_BANG_.call(null,self__.owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data))].join(''),(7),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(self__.data),true));
-});})(___$1,map__19562,map__19562__$1))
-},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data),(7),(8))),React.DOM.button({"onClick": ((function (___$1,map__19562,map__19562__$1){
-return (function (){
-return om.core.set_state_BANG_.call(null,self__.owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data))].join(''),(8),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(self__.data),true));
-});})(___$1,map__19562,map__19562__$1))
-},cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(self__.data),(8),(9))));
+return ttt.core.show_board.call(null,self__.owner,self__.data);
 });
 
-ttt.core.t19558.prototype.om$core$IInitState$ = true;
+ttt.core.t23227.prototype.om$core$IInitState$ = true;
 
-ttt.core.t19558.prototype.om$core$IInitState$init_state$arity$1 = (function (_){
+ttt.core.t23227.prototype.om$core$IInitState$init_state$arity$1 = (function (_){
 var self__ = this;
 var ___$1 = this;
 return cljs.core.PersistentArrayMap.EMPTY;
 });
 
-ttt.core.t19558.prototype.om$core$ICheckState$ = true;
+ttt.core.t23227.prototype.om$core$ICheckState$ = true;
 
-ttt.core.t19558.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_19560){
+ttt.core.t23227.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_23229){
 var self__ = this;
-var _19560__$1 = this;
-return self__.meta19559;
+var _23229__$1 = this;
+return self__.meta23228;
 });
 
-ttt.core.t19558.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_19560,meta19559__$1){
+ttt.core.t23227.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_23229,meta23228__$1){
 var self__ = this;
-var _19560__$1 = this;
-return (new ttt.core.t19558(self__.owner,self__.data,self__.game,meta19559__$1));
+var _23229__$1 = this;
+return (new ttt.core.t23227(self__.owner,self__.data,self__.game,meta23228__$1));
 });
 
-ttt.core.t19558.cljs$lang$type = true;
+ttt.core.t23227.cljs$lang$type = true;
 
-ttt.core.t19558.cljs$lang$ctorStr = "ttt.core/t19558";
+ttt.core.t23227.cljs$lang$ctorStr = "ttt.core/t23227";
 
-ttt.core.t19558.cljs$lang$ctorPrWriter = (function (this__16732__auto__,writer__16733__auto__,opt__16734__auto__){
-return cljs.core._write.call(null,writer__16733__auto__,"ttt.core/t19558");
+ttt.core.t23227.cljs$lang$ctorPrWriter = (function (this__16732__auto__,writer__16733__auto__,opt__16734__auto__){
+return cljs.core._write.call(null,writer__16733__auto__,"ttt.core/t23227");
 });
 
-ttt.core.__GT_t19558 = (function __GT_t19558(owner__$1,data__$1,game__$1,meta19559){
-return (new ttt.core.t19558(owner__$1,data__$1,game__$1,meta19559));
+ttt.core.__GT_t23227 = (function __GT_t23227(owner__$1,data__$1,game__$1,meta23228){
+return (new ttt.core.t23227(owner__$1,data__$1,game__$1,meta23228));
 });
 
 }
 
-return (new ttt.core.t19558(owner,data,game,cljs.core.PersistentArrayMap.EMPTY));
+return (new ttt.core.t23227(owner,data,game,cljs.core.PersistentArrayMap.EMPTY));
 });
 om.core.root.call(null,ttt.core.game,ttt.core.app_state,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"target","target",253001721),document.getElementById("app")], null));
 
-//# sourceMappingURL=core.js.map?rel=1428406484881
+//# sourceMappingURL=core.js.map?rel=1428470303039
