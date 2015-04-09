@@ -13,8 +13,8 @@ ttt.core.new_board = (function new_board(){
 return "---------";
 });
 ttt.core.matches = (function matches(matcher,board){
-return cljs.core.map.call(null,cljs.core.first,cljs.core.filter.call(null,(function (p1__23802_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.second.call(null,p1__23802_SHARP_),matcher);
+return cljs.core.map.call(null,cljs.core.first,cljs.core.filter.call(null,(function (p1__35834_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.second.call(null,p1__35834_SHARP_),matcher);
 }),cljs.core.map_indexed.call(null,cljs.core.vector,board)));
 });
 ttt.core.winners = new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(3),(6)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(1),(4),(7)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(2),(5),(8)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(4),(8)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(2),(4),(6)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(1),(2)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(3),(4),(5)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(6),(7),(8)], null)], null);
@@ -44,16 +44,16 @@ if(((6) < cljs.core.count.call(null,possible_moves))){
 return cljs.core.rand_nth.call(null,corners_and_center);
 } else {
 var win_move = cljs.core.filter.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__23803_SHARP_){
-return !((p1__23803_SHARP_ == null));
+return (function (p1__35835_SHARP_){
+return !((p1__35835_SHARP_ == null));
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
 return (function (y){
 return cljs.core.some.call(null,y,possible_moves);
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.filter.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__23804_SHARP_){
-return !((p1__23804_SHARP_ == null));
+return (function (p1__35836_SHARP_){
+return !((p1__35836_SHARP_ == null));
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
 return (function (x){
@@ -65,16 +65,16 @@ return null;
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,ttt.core.winners))));
 var block_move = cljs.core.filter.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__23805_SHARP_){
-return !((p1__23805_SHARP_ == null));
+return (function (p1__35837_SHARP_){
+return !((p1__35837_SHARP_ == null));
 });})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
 return (function (y){
 return cljs.core.some.call(null,y,possible_moves);
 });})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.filter.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__23806_SHARP_){
-return !((p1__23806_SHARP_ == null));
+return (function (p1__35838_SHARP_){
+return !((p1__35838_SHARP_ == null));
 });})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
 return (function (x){
@@ -131,7 +131,7 @@ cljs.core.println.call(null,board);
 return cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"board","board",-1907017633),board);
 });
 ttt.core.show_board = (function show_board(owner,data){
-return React.DOM.div(null,(cljs.core.truth_(ttt.core.win_QMARK_.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data)))?React.DOM.div({"className": "col-lg-8 col-lg-offset-2 alert"},React.DOM.div({"className": "finalMessage animated tada"},[cljs.core.str(((cljs.core._EQ_.call(null,"x",new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data)))?cljs.core.rand_nth.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["What a shame!","SuperBot wins!","It was easy!"], null)):cljs.core.rand_nth.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Adrian, we did it!","This is happiness!","Sweet!"], null))))].join('')),React.DOM.button({"onClick": (function (){
+return React.DOM.div(null,(cljs.core.truth_(ttt.core.win_QMARK_.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data)))?React.DOM.div({"className": "alert"},React.DOM.div({"className": "finalMessage animated tada"},[cljs.core.str(((cljs.core._EQ_.call(null,"x",new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data)))?cljs.core.rand_nth.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["What a shame!","SuperBot wins!","It was easy!"], null)):cljs.core.rand_nth.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Adrian, we did it!","This is happiness!","Sweet!"], null))))].join('')),React.DOM.button({"onClick": (function (){
 return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.restart.call(null,data));
 }), "className": "restart animated infinite pulse"},"Play Again!")):null),((ttt.core.draw_QMARK_.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data)))?React.DOM.div({"className": "col-lg-8 col-lg-offset-2 alert"},React.DOM.div({"className": "finalMessage animated tada"},"It is a Draw!"),React.DOM.button({"onClick": (function (){
 return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.restart.call(null,data));
@@ -156,68 +156,68 @@ return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board
 }), "className": cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(8),(9))})));
 });
 ttt.core.game = (function game(data,owner){
-if(typeof ttt.core.t23812 !== 'undefined'){
+if(typeof ttt.core.t35844 !== 'undefined'){
 } else {
 
 /**
 * @constructor
 */
-ttt.core.t23812 = (function (owner,data,game,meta23813){
+ttt.core.t35844 = (function (owner,data,game,meta35845){
 this.owner = owner;
 this.data = data;
 this.game = game;
-this.meta23813 = meta23813;
+this.meta35845 = meta35845;
 this.cljs$lang$protocol_mask$partition1$ = 0;
 this.cljs$lang$protocol_mask$partition0$ = 393216;
 })
-ttt.core.t23812.prototype.om$core$IRenderState$ = true;
+ttt.core.t35844.prototype.om$core$IRenderState$ = true;
 
-ttt.core.t23812.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__23815){
+ttt.core.t35844.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__35847){
 var self__ = this;
-var map__23816 = p__23815;
-var map__23816__$1 = ((cljs.core.seq_QMARK_.call(null,map__23816))?cljs.core.apply.call(null,cljs.core.hash_map,map__23816):map__23816);
+var map__35848 = p__35847;
+var map__35848__$1 = ((cljs.core.seq_QMARK_.call(null,map__35848))?cljs.core.apply.call(null,cljs.core.hash_map,map__35848):map__35848);
 var ___$1 = this;
 return ttt.core.show_board.call(null,self__.owner,self__.data);
 });
 
-ttt.core.t23812.prototype.om$core$IInitState$ = true;
+ttt.core.t35844.prototype.om$core$IInitState$ = true;
 
-ttt.core.t23812.prototype.om$core$IInitState$init_state$arity$1 = (function (_){
+ttt.core.t35844.prototype.om$core$IInitState$init_state$arity$1 = (function (_){
 var self__ = this;
 var ___$1 = this;
 return cljs.core.PersistentArrayMap.EMPTY;
 });
 
-ttt.core.t23812.prototype.om$core$ICheckState$ = true;
+ttt.core.t35844.prototype.om$core$ICheckState$ = true;
 
-ttt.core.t23812.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_23814){
+ttt.core.t35844.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_35846){
 var self__ = this;
-var _23814__$1 = this;
-return self__.meta23813;
+var _35846__$1 = this;
+return self__.meta35845;
 });
 
-ttt.core.t23812.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_23814,meta23813__$1){
+ttt.core.t35844.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_35846,meta35845__$1){
 var self__ = this;
-var _23814__$1 = this;
-return (new ttt.core.t23812(self__.owner,self__.data,self__.game,meta23813__$1));
+var _35846__$1 = this;
+return (new ttt.core.t35844(self__.owner,self__.data,self__.game,meta35845__$1));
 });
 
-ttt.core.t23812.cljs$lang$type = true;
+ttt.core.t35844.cljs$lang$type = true;
 
-ttt.core.t23812.cljs$lang$ctorStr = "ttt.core/t23812";
+ttt.core.t35844.cljs$lang$ctorStr = "ttt.core/t35844";
 
-ttt.core.t23812.cljs$lang$ctorPrWriter = (function (this__16732__auto__,writer__16733__auto__,opt__16734__auto__){
-return cljs.core._write.call(null,writer__16733__auto__,"ttt.core/t23812");
+ttt.core.t35844.cljs$lang$ctorPrWriter = (function (this__16732__auto__,writer__16733__auto__,opt__16734__auto__){
+return cljs.core._write.call(null,writer__16733__auto__,"ttt.core/t35844");
 });
 
-ttt.core.__GT_t23812 = (function __GT_t23812(owner__$1,data__$1,game__$1,meta23813){
-return (new ttt.core.t23812(owner__$1,data__$1,game__$1,meta23813));
+ttt.core.__GT_t35844 = (function __GT_t35844(owner__$1,data__$1,game__$1,meta35845){
+return (new ttt.core.t35844(owner__$1,data__$1,game__$1,meta35845));
 });
 
 }
 
-return (new ttt.core.t23812(owner,data,game,cljs.core.PersistentArrayMap.EMPTY));
+return (new ttt.core.t35844(owner,data,game,cljs.core.PersistentArrayMap.EMPTY));
 });
 om.core.root.call(null,ttt.core.game,ttt.core.app_state,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"target","target",253001721),document.getElementById("game")], null));
 
-//# sourceMappingURL=core.js.map?rel=1428568907884
+//# sourceMappingURL=core.js.map?rel=1428593690107

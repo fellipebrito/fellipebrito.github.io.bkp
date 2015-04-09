@@ -83,7 +83,7 @@
         ;; (if (not (win? (:board data)))
         (if (win? (:board data))
           (do
-              (dom/div #js {:className "col-lg-8 col-lg-offset-2 alert"}
+              (dom/div #js {:className "alert"}
                       (dom/div #js {:className "finalMessage animated tada"} (str (if (= "x" (:player data)) (rand-nth ["What a shame!" "SuperBot wins!" "It was easy!"]) (rand-nth ["Adrian, we did it!" "This is happiness!" "Sweet!"]))))
                       (dom/button #js {:className "restart animated infinite pulse" :onClick #(om/set-state! owner :board (restart data))} "Play Again!"))))
         (if (draw? (:board data))
