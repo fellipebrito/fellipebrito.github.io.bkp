@@ -1,1 +1,1 @@
-{"version":3,"file":"\/var\/www\/personal\/ttt\/resources\/public\/js\/compiled\/out\/ttt\/dev.js","sources":["dev.cljs?rel=1428378440830"],"lineCount":10,"mappings":";AAAA;;;;AAKA,gCAAA,2CAAA,uEAAA,kCAAA,pLAACA,mPAEY;AAAA,AAAA","names":["figwheel.client\/start"]}
+{"version":3,"file":"\/var\/www\/personal\/tic-tac-toe-cljs\/resources\/public\/js\/compiled\/out\/ttt\/dev.js","sources":["dev.cljs?rel=1428567712610"],"lineCount":10,"mappings":";AAAA;;;;AAKA,gCAAA,2CAAA,uEAAA,kCAAA,pLAACA,mPAEY;AAAA,AAAA","names":["figwheel.client\/start"]}
