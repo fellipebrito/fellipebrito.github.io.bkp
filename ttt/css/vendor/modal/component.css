@@ -44,6 +44,7 @@
   height: 100%;
   -webkit-transition: opacity 0.1s 0.5s;
   transition: opacity 0.1s 0.5s;
+  margin-top: 10px;
 }
 
 .morph-button-fixed.open > button {
