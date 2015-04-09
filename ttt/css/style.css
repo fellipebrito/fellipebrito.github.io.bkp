@@ -41,7 +41,7 @@ button.x:after {
 
   #game{
     margin-top: 150px;
-    background: url("/images/board.png") no-repeat center -10px white;
+    background: url("../images/board.png") no-repeat center -10px white;
     background-size: 100%;
   }
 
@@ -93,7 +93,7 @@ button.x:after {
 
   #game{
     margin-top: 40px;
-    background: url("/images/board.png") no-repeat center -10px white;
+    background: url("../images/board.png") no-repeat center -10px white;
     background-size: 500px 400px;
   }
 
@@ -116,7 +116,7 @@ button.x:after {
 
   #game{
     margin-top: 60px;
-    background: url("/images/board.png") no-repeat center -10px white;
+    background: url("../images/board.png") no-repeat center -10px white;
     background-size: 500px 400px;
   }
 
