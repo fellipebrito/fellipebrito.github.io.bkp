@@ -112,13 +112,15 @@
 
 .content-style-overlay p {
   margin: 0 auto;
-  padding: 10px 0;
   max-width: 700px;
-  text-align: justify;
+  text-align: center;
   font-weight: 300;
   font-size: 1.5em;
 }
 
+.content-style-overlay a {
+  color: #0099FF;
+}
 .content-style-overlay .icon-close {
   border: 2px solid #FAFFFF;
   border-radius: 50%;
