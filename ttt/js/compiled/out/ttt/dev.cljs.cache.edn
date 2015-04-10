@@ -1,2 +1,0 @@
-;; Analyzed by ClojureScript 0.0-2850
-{:name ttt.dev, :doc nil, :excludes #{}, :use-macros nil, :require-macros nil, :uses nil, :requires {fw figwheel.client, figwheel.client figwheel.client, ttt.core ttt.core}, :imports nil}
