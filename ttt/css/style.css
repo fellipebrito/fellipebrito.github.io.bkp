@@ -7,6 +7,7 @@ h1{
 }
 
 #game{
+  margin-top: 3em;
   background: url("../images/board.png") no-repeat center 0px white;
   background-size: 100%;
 }
@@ -52,7 +53,11 @@ button.x:after {
 }
 
 /* iPhone 4s */
-@media (max-width: 320px) {
+@media (max-height: 480px) {
+  #game{
+    margin-top: 0.5em;
+  }
+
   #game button.xo{
     margin-left: -25px;
   }
@@ -60,9 +65,6 @@ button.x:after {
 
 /* iPhone 6 and Plus - Nexus 5 */
 @media (min-width: 321px) {
-  #game{
-    margin-top: 3em;
-  }
   #game button.xo{
     height: 1.8em;
     font-size: 60px;
