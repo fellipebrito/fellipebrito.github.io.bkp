@@ -54,12 +54,20 @@ button.x:after {
 
 /* iPhone 4s */
 @media (max-height: 480px) {
+  h1{
+    font-size: 5em;
+  }
+
   #game{
-    margin-top: 0.5em;
+    margin-left: 15%;
+    width: 70%;
+    margin-top: 0;
   }
 
   #game button.xo{
+    font-size:2em;
     margin-left: -25px;
+    /* height: 1.7em; */
   }
 }
 

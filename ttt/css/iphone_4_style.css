@@ -1,0 +1,13 @@
+/* iPhone 4s */
+@media (max-height: 480px) {
+  #game{
+    margin-left: 5%;
+    width: 90%;
+    margin-top: 2em;
+  }
+
+  #game button.xo{
+    font-size:2.5em;
+    margin-left: -20px;
+  }
+}
