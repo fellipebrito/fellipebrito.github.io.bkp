@@ -18,6 +18,7 @@ h1{
   width: 100%;
   height: 2.4em;
   font-size: 40px;
+  text-align: left;
   border: 5px solid transparent;
 }
 
@@ -48,6 +49,12 @@ button.x:after {
   font-family: 'Amatic SC', cursive;
   color: white;
   text-align: center;
+}
+
+@media (max-width: 320px) {
+  #game button.xo{
+    margin-left: -25px;
+  }
 }
 
 /* iPhone 6 and Plus - Nexus 5 */
@@ -81,6 +88,6 @@ button.x:after {
   text-shadow: 1px 4px #FF0000;
 }
 
-/* #game button.restart:focus{ */
-/*   box-shadow: -3px 13px 71px yellow; */
-/* } */
+#game button.restart:focus{
+  text-shadow: 0;
+}

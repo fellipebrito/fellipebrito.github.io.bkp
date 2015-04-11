@@ -12,8 +12,8 @@ ttt.core.new_board = (function new_board(){
 return "---------";
 });
 ttt.core.matches = (function matches(matcher,board){
-return cljs.core.map.call(null,cljs.core.first,cljs.core.filter.call(null,(function (p1__18990_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.second.call(null,p1__18990_SHARP_),matcher);
+return cljs.core.map.call(null,cljs.core.first,cljs.core.filter.call(null,(function (p1__19101_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.second.call(null,p1__19101_SHARP_),matcher);
 }),cljs.core.map_indexed.call(null,cljs.core.vector,board)));
 });
 ttt.core.winners = new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(3),(6)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(1),(4),(7)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(2),(5),(8)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(4),(8)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(2),(4),(6)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(1),(2)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(3),(4),(5)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(6),(7),(8)], null)], null);
@@ -43,16 +43,16 @@ if(((6) < cljs.core.count.call(null,possible_moves))){
 return cljs.core.rand_nth.call(null,corners_and_center);
 } else {
 var win_move = cljs.core.filter.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__18991_SHARP_){
-return !((p1__18991_SHARP_ == null));
+return (function (p1__19102_SHARP_){
+return !((p1__19102_SHARP_ == null));
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
 return (function (y){
 return cljs.core.some.call(null,y,possible_moves);
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.filter.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__18992_SHARP_){
-return !((p1__18992_SHARP_ == null));
+return (function (p1__19103_SHARP_){
+return !((p1__19103_SHARP_ == null));
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
 return (function (x){
@@ -64,16 +64,16 @@ return null;
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,ttt.core.winners))));
 var block_move = cljs.core.filter.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__18993_SHARP_){
-return !((p1__18993_SHARP_ == null));
+return (function (p1__19104_SHARP_){
+return !((p1__19104_SHARP_ == null));
 });})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
 return (function (y){
 return cljs.core.some.call(null,y,possible_moves);
 });})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.filter.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__18994_SHARP_){
-return !((p1__18994_SHARP_ == null));
+return (function (p1__19105_SHARP_){
+return !((p1__19105_SHARP_ == null));
 });})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
 return (function (x){
@@ -96,12 +96,7 @@ return cljs.core.rand_nth.call(null,possible_moves);
 }
 });
 ttt.core.move = (function move(board,place,player,human_QMARK_){
-var board_after_human = ((cljs.core.not_EQ_.call(null,"-",cljs.core.get.call(null,board,place)))?(function (){
-alert("Invalid move");
-
-return board;
-})()
-:(function (){var board_after_move = [cljs.core.str(cljs.core.subs.call(null,board,(0),place)),cljs.core.str(player),cljs.core.str(cljs.core.subs.call(null,board,(place + (1))))].join('');
+var board_after_human = ((cljs.core.not_EQ_.call(null,"-",cljs.core.get.call(null,board,place)))?board.call(null):(function (){var board_after_move = [cljs.core.str(cljs.core.subs.call(null,board,(0),place)),cljs.core.str(player),cljs.core.str(cljs.core.subs.call(null,board,(place + (1))))].join('');
 cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"player","player",-97687400),((cljs.core._EQ_.call(null,"x",player))?"o":"x"));
 
 return cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"board","board",-1907017633),board_after_move);
@@ -155,68 +150,68 @@ return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board
 }), "className": [cljs.core.str("xo "),cljs.core.str(cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(8),(9)))].join('')})));
 });
 ttt.core.game = (function game(data,owner){
-if(typeof ttt.core.t19000 !== 'undefined'){
+if(typeof ttt.core.t19111 !== 'undefined'){
 } else {
 
 /**
 * @constructor
 */
-ttt.core.t19000 = (function (owner,data,game,meta19001){
+ttt.core.t19111 = (function (owner,data,game,meta19112){
 this.owner = owner;
 this.data = data;
 this.game = game;
-this.meta19001 = meta19001;
+this.meta19112 = meta19112;
 this.cljs$lang$protocol_mask$partition1$ = 0;
 this.cljs$lang$protocol_mask$partition0$ = 393216;
 })
-ttt.core.t19000.prototype.om$core$IRenderState$ = true;
+ttt.core.t19111.prototype.om$core$IRenderState$ = true;
 
-ttt.core.t19000.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__19003){
+ttt.core.t19111.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__19114){
 var self__ = this;
-var map__19004 = p__19003;
-var map__19004__$1 = ((cljs.core.seq_QMARK_.call(null,map__19004))?cljs.core.apply.call(null,cljs.core.hash_map,map__19004):map__19004);
+var map__19115 = p__19114;
+var map__19115__$1 = ((cljs.core.seq_QMARK_.call(null,map__19115))?cljs.core.apply.call(null,cljs.core.hash_map,map__19115):map__19115);
 var ___$1 = this;
 return ttt.core.show_board.call(null,self__.owner,self__.data);
 });
 
-ttt.core.t19000.prototype.om$core$IInitState$ = true;
+ttt.core.t19111.prototype.om$core$IInitState$ = true;
 
-ttt.core.t19000.prototype.om$core$IInitState$init_state$arity$1 = (function (_){
+ttt.core.t19111.prototype.om$core$IInitState$init_state$arity$1 = (function (_){
 var self__ = this;
 var ___$1 = this;
 return cljs.core.PersistentArrayMap.EMPTY;
 });
 
-ttt.core.t19000.prototype.om$core$ICheckState$ = true;
+ttt.core.t19111.prototype.om$core$ICheckState$ = true;
 
-ttt.core.t19000.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_19002){
+ttt.core.t19111.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_19113){
 var self__ = this;
-var _19002__$1 = this;
-return self__.meta19001;
+var _19113__$1 = this;
+return self__.meta19112;
 });
 
-ttt.core.t19000.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_19002,meta19001__$1){
+ttt.core.t19111.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_19113,meta19112__$1){
 var self__ = this;
-var _19002__$1 = this;
-return (new ttt.core.t19000(self__.owner,self__.data,self__.game,meta19001__$1));
+var _19113__$1 = this;
+return (new ttt.core.t19111(self__.owner,self__.data,self__.game,meta19112__$1));
 });
 
-ttt.core.t19000.cljs$lang$type = true;
+ttt.core.t19111.cljs$lang$type = true;
 
-ttt.core.t19000.cljs$lang$ctorStr = "ttt.core/t19000";
+ttt.core.t19111.cljs$lang$ctorStr = "ttt.core/t19111";
 
-ttt.core.t19000.cljs$lang$ctorPrWriter = (function (this__16732__auto__,writer__16733__auto__,opt__16734__auto__){
-return cljs.core._write.call(null,writer__16733__auto__,"ttt.core/t19000");
+ttt.core.t19111.cljs$lang$ctorPrWriter = (function (this__16732__auto__,writer__16733__auto__,opt__16734__auto__){
+return cljs.core._write.call(null,writer__16733__auto__,"ttt.core/t19111");
 });
 
-ttt.core.__GT_t19000 = (function __GT_t19000(owner__$1,data__$1,game__$1,meta19001){
-return (new ttt.core.t19000(owner__$1,data__$1,game__$1,meta19001));
+ttt.core.__GT_t19111 = (function __GT_t19111(owner__$1,data__$1,game__$1,meta19112){
+return (new ttt.core.t19111(owner__$1,data__$1,game__$1,meta19112));
 });
 
 }
 
-return (new ttt.core.t19000(owner,data,game,cljs.core.PersistentArrayMap.EMPTY));
+return (new ttt.core.t19111(owner,data,game,cljs.core.PersistentArrayMap.EMPTY));
 });
 om.core.root.call(null,ttt.core.game,ttt.core.app_state,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"target","target",253001721),document.getElementById("game")], null));
 
-//# sourceMappingURL=core.js.map?rel=1428714301693
+//# sourceMappingURL=core.js.map?rel=1428716060697

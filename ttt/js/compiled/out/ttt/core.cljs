@@ -57,7 +57,7 @@
 (defn move [board place player human?]
   (let [board-after-human
     (if (not= \- (get board place))
-      (do (js/alert "Invalid move") board)
+      (board)
       (let [board-after-move (str (subs board 0 place) player (subs board (inc place)))]
             (do (swap! app-state assoc :player (if (= "x" player) "o" "x")) ;; change player for the next move
                 (swap! app-state assoc :board board-after-move))))]
