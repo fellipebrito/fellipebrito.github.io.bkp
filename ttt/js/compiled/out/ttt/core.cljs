@@ -11,6 +11,7 @@
 
 ;; game logic
 (defn new-board [] "---------")
+(defn new-board [] "xxoooxx-o")
 
 (defn matches [matcher board]
   (map first (filter #(= (second %) matcher)
@@ -80,42 +81,43 @@
     (do
       (dom/div nil
         ;; (if (not (win? (:board data)))
-        (if (win? (:board data))
-          (do
-              (dom/div #js {:className "alert"}
-                      (dom/div #js {:className "finalMessage animated tada"} (str (if (= "x" (:player data)) (rand-nth ["What a shame!" "SuperBot wins!" "It was easy!"]) (rand-nth ["Adrian, we did it!" "This is happiness!" "Sweet!"]))))
-                      (dom/button #js {:className "restart animated infinite pulse" :onClick #(om/set-state! owner :board (restart data))} "Play Again!"))))
+        ;; (if (win? (:board data))
+        ;;   (do
+        ;;       (dom/div #js {:className "alert"}
+        ;;               (dom/div #js {:className "finalMessage animated tada"} (str (if (= "x" (:player data)) (rand-nth ["What a shame!" "SuperBot wins!" "It was easy!"]) (rand-nth ["Adrian, we did it!" "This is happiness!" "Sweet!"]))))
+        ;;               (dom/button #js {:className "restart animated infinite pulse" :onClick #(om/set-state! owner :board (restart data))} "Play Again!"))))
         (if (draw? (:board data))
           (do
-              (dom/div #js {:className "alert"}
-                      (dom/div #js {:className "finalMessage animated tada"} (str (rand-nth ["Win or Win. There is no Draw" "I will kick your butt in the next one" "Boooooring"])))
-                      (dom/button #js {:className "restart animated infinite pulse" :onClick #(om/set-state! owner :board (restart data))} "Play Again!"))))
-        (dom/div #js {:className "col-lg-2 col-md-2 col-sm-4 col-xs-4 col-md-offset-3 col-lg-offset-3"}
-                (dom/button #js {:className (subs (:board data) 0 1)
+            (dom/div #js {:className "col-xs-12"}
+                     (dom/div #js {:className "alert"}
+                              (dom/div #js {:className "finalMessage animated tada"} (str (rand-nth ["Win or Win. There is no Draw" "I will kick your butt in the next one" "Boooooring"])))
+                              (dom/button #js {:className "restart animated infinite pulse" :onClick #(om/set-state! owner :board (restart data))} "Play Again!")))))
+        (dom/div #js {:className "col-xs-4"}
+                (dom/button #js {:className (str "xo " (subs (:board data) 0 1))
                                   :onClick #(om/set-state! owner :board (move (str (:board data)) 0 (:player data) true))}))
-        (dom/div #js {:className "col-lg-2 col-md-2 col-sm-4 col-xs-4"}
-                (dom/button #js {:className (subs (:board data) 1 2)
+        (dom/div #js {:className "col-xs-4"}
+                (dom/button #js {:className (str "xo " (subs (:board data) 1 2))
                                   :onClick #(om/set-state! owner :board (move (str (:board data)) 1 (:player data) true))}))
-        (dom/div #js {:className "col-lg-2 col-md-2 col-sm-4 col-xs-4"}
-                (dom/button #js {:className (subs (:board data) 2 3)
+        (dom/div #js {:className "col-xs-4"}
+                (dom/button #js {:className (str "xo " (subs (:board data) 2 3))
                                   :onClick #(om/set-state! owner :board (move (str (:board data)) 2 (:player data) true))}))
-        (dom/div #js {:className "col-lg-2 col-md-2 col-sm-4 col-xs-4 col-md-offset-3 col-lg-offset-3"}
-                (dom/button #js {:className (subs (:board data) 3 4)
+        (dom/div #js {:className "col-xs-4"}
+                (dom/button #js {:className (str "xo " (subs (:board data) 3 4))
                                   :onClick #(om/set-state! owner :board (move (str (:board data)) 3 (:player data) true))}))
-        (dom/div #js {:className "col-lg-2 col-md-2 col-sm-4 col-xs-4"}
-                (dom/button #js {:className (subs (:board data) 4 5)
+        (dom/div #js {:className "col-xs-4"}
+                (dom/button #js {:className (str "xo " (subs (:board data) 4 5))
                                   :onClick #(om/set-state! owner :board (move (str (:board data)) 4 (:player data) true))}))
-        (dom/div #js {:className "col-lg-2 col-md-2 col-sm-4 col-xs-4"}
-                (dom/button #js {:className (subs (:board data) 5 6)
+        (dom/div #js {:className "col-xs-4"}
+                (dom/button #js {:className (str "xo " (subs (:board data) 5 6))
                                   :onClick #(om/set-state! owner :board (move (str (:board data)) 5 (:player data) true))}))
-        (dom/div #js {:className "col-lg-2 col-md-2 col-sm-4 col-xs-4 col-md-offset-3 col-lg-offset-3"}
-                (dom/button #js {:className (subs (:board data) 6 7)
+        (dom/div #js {:className "col-xs-4"}
+                (dom/button #js {:className (str "xo " (subs (:board data) 6 7))
                                   :onClick #(om/set-state! owner :board (move (str (:board data)) 6 (:player data) true))}))
-        (dom/div #js {:className "col-lg-2 col-md-2 col-sm-4 col-xs-4"}
-                (dom/button #js {:className (subs (:board data) 7 8)
+        (dom/div #js {:className "col-xs-4"}
+                (dom/button #js {:className (str "xo " (subs (:board data) 7 8))
                                   :onClick #(om/set-state! owner :board (move (str (:board data)) 7 (:player data) true))}))
-        (dom/div #js {:className "col-lg-2 col-md-2 col-sm-4 col-xs-4"}
-                (dom/button #js {:className (subs (:board data) 8 9)
+        (dom/div #js {:className "col-xs-4"}
+                (dom/button #js {:className (str "xo " (subs (:board data) 8 9))
                                   :onClick #(om/set-state! owner :board (move (str (:board data)) 8 (:player data) true))})))))
 
 (defn game [data owner]

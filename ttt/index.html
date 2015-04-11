@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="mobile-web-app-capable" content="yes">
+    <!-- <meta name="mobile&#45;web&#45;app&#45;capable" content="yes"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
     <link rel="manifest" href="manifest.json">
 
     <script src="js/vendor/jquery.min.js"></script>
@@ -31,39 +33,41 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 col-lg-offset-11 col-md-offset-11 col-sm-offset-11 col-xs-offset-11">
-          <section>
-            <div class="morph-button morph-button-overlay morph-button-fixed">
-              <button type="button"><i class="fa fa-bars fa-4x"></i></button>
-
-              <div class="morph-content">
-                <div>
-                  <div class="content-style-overlay">
-                    <span class="icon icon-close"><i class="fa fa-times"></i> </span>
-                    <h2>About TicTacToe</h2>
-                    <p>TicTacToe was made by <a target="_blank" href="https://github.com/fellipebrito">Fellipe Brito</a> with the goal of learning ClojureScript.</p>
-                    <br />
-                    <p>If you want to see the source code, you can get it <a href="https://github.com/fellipebrito/tic-tac-toe-cljs" target="_blank">here</a>.</p>
-                    <br />
-                    <p>I wish you have as much fun playing as I had building it. Carpe Diem!</p>
-                  </div>
-                </div>
-              </div>
-            </div><!-- morph-button -->
-          </section>
-        </div>
-      </div>
+    <div class="container-fluid">
+      <!-- <div class="row"> -->
+        <!-- <div class="col&#45;lg&#45;1 col&#45;md&#45;1 col&#45;sm&#45;1 col&#45;xs&#45;1 col&#45;lg&#45;offset&#45;11 col&#45;md&#45;offset&#45;11 col&#45;sm&#45;offset&#45;11 col&#45;xs&#45;offset&#45;11"> -->
+        <!--   <section> -->
+        <!--     <div class="morph&#45;button morph&#45;button&#45;overlay morph&#45;button&#45;fixed"> -->
+        <!--       <button type="button"><i class="fa fa&#45;bars fa&#45;4x"></i></button> -->
+        <!--  -->
+        <!--       <div class="morph&#45;content"> -->
+        <!--         <div> -->
+        <!--           <div class="content&#45;style&#45;overlay"> -->
+        <!--             <span class="icon icon&#45;close"><i class="fa fa&#45;times"></i> </span> -->
+        <!--             <h2>About TicTacToe</h2> -->
+        <!--             <p>TicTacToe was made by <a target="_blank" href="https://github.com/fellipebrito">Fellipe Brito</a> with the goal of learning ClojureScript.</p> -->
+        <!--             <br /> -->
+        <!--             <p>If you want to see the source code, you can get it <a href="https://github.com/fellipebrito/tic&#45;tac&#45;toe&#45;cljs" target="_blank">here</a>.</p> -->
+        <!--             <br /> -->
+        <!--             <p>I wish you have as much fun playing as I had building it. Carpe Diem!</p> -->
+        <!--           </div> -->
+        <!--         </div> -->
+        <!--       </div> -->
+        <!--     </div><!&#45;&#45; morph&#45;button &#45;&#45;> -->
+        <!--   </section> -->
+        <!-- </div> -->
+      <!-- </div> -->
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <h1>Tic Tac Toe</h1>
         </div>
       </div>
-      <div id="game" class="row"></div>
+      <div class="row">
+        <div class="col-xs-12" id="game"></div>
+      </div>
       <script src="js/compiled/ttt.js" type="text/javascript"></script>
     </div><!-- /container -->
-    <audio controls autoplay loop style="display:none;">
+    <!-- <audio controls autoplay loop style="display:none;"> -->
       <source src="music/bg.mp3" type="audio/mpeg">
     </audio>
 

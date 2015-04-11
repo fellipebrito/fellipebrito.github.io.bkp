@@ -1,18 +1,24 @@
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
-
-#game button{
-  font-family: 'Rock Salt', cursive;
-  background: none;
-  border: 5px solid transparent;
-  width: 100%;
-  text-transform: uppercase;
-  line-height: initial;
-}
-
 h1{
   text-align: center;
   font-family: 'Amatic SC', cursive;
+  font-size: 7em;
+}
+
+#game{
+  margin-top: 3em;
+  background: url("../images/board.png") no-repeat center 0px white;
+  background-size: 100%;
+}
+
+#game button.xo{
+  font-family: 'Rock Salt', cursive;
+  background: transparent;
+  width: 100%;
+  height: 2.4em;
+  font-size: 40px;
+  border: 5px solid transparent;
 }
 
 button.o:after {
@@ -25,159 +31,56 @@ button.x:after {
   content: "x";
 }
 
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 900px) and (max-width: 991px) {
-  .container{
-    width: 900px;
+/* Final Message */
+.alert{
+  background: gray;
+  z-index: 9999;
+  margin-left: -28px;
+  width: 22.6em;
+  height: 21em;
+  background: rgba(30,30,30,0.5);
+  position: absolute;
+}
+
+.finalMessage{
+  font-size: 3em;
+  height: 3em;
+  font-family: 'Amatic SC', cursive;
+  color: white;
+  text-align: center;
+}
+
+/* iPhone 6 and Plus - Nexus 5 */
+@media (min-width: 321px) {
+  #game button.xo{
+    height: 1.8em;
+    font-size: 60px;
   }
 
-  h1{
-    margin-top:50px;
-    font-size: 18em;
-  }
-
-  #game{
-    margin-top: 150px;
-    background: url("../images/board.png") no-repeat center -10px white;
-    background-size: 100%;
-  }
-
-  #game button{
-    height: 263px;
-    font-size: 7em;
-  }
-
-  /* Final Message */
   .alert{
-    background: gray;
-    z-index: 9999;
-    height: 880px;
-    background: rgba(0,0,0,0.5);
-    position: absolute;
-    width: 900px;
-  }
-
-  .finalMessage{
-    font-size: 10em;
-    font-family: 'Amatic SC', cursive;
-    color: white;
-    text-align: center;
-    margin-top:60px;
-    margin-bottom: 140px;
-  }
-
-  #game button.restart{
-    font-size: 3em;
-    color: white;
-    box-shadow: -3px 13px 71px;
-  }
-
-  #game button.restart:focus{
-    box-shadow: -3px 13px 71px yellow;
+    height: 24em;
+    width: 25.4em;
   }
 }
 
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .container{
-    width: 900px;
-  }
-
-  h1{
-    margin-top: 10px;
-    font-size: 10em;
-  }
-
-  #game{
-    margin-top: 40px;
-    background: url("../images/board.png") no-repeat center -10px white;
-    background-size: 500px 400px;
-  }
-
-  #game button{
-    height: 112px;
-    font-size: 3em;
-  }
-
-  /* Final Message */
+/* iPhone 6 and Plus */
+@media (min-width: 370px) {
   .alert{
-    background: gray;
-    z-index: 9999;
-    height: 400px;
-    background: rgba(0,0,0,0.5);
-    position: absolute;
-    width: 700px;
-    margin-left: 90px;
-  }
-
-  .finalMessage{
-    font-size: 7em;
-    font-family: 'Amatic SC', cursive;
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 40px;
-  }
-
-  #game button.restart{
-    font-size: 3em;
-    color: white;
-    box-shadow: -3px 13px 71px;
-  }
-
-  #game button.restart:focus{
-    box-shadow: -3px 13px 71px yellow;
+    height: 24em;
+    width: 26.5em;
   }
 }
 
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-  .container{
-    width: 900px;
-  }
-
-  h1{
-    margin-top: 10px;
-    font-size: 12em;
-  }
-
-  #game{
-    margin-top: 60px;
-    background: url("../images/board.png") no-repeat center -10px white;
-    background-size: 500px 400px;
-  }
-
-  #game button{
-    height: 112px;
-    font-size: 3em;
-  }
-
-  /* Final Message */
-  .alert{
-    background: gray;
-    z-index: 9999;
-    height: 395px;
-    background: rgba(0,0,0,0.5);
-    position: absolute;
-    width: 900px;
-  }
-
-  .finalMessage{
-    font-size: 4em;
-    font-family: 'Amatic SC', cursive;
-    color: white;
-    text-align: center;
-    margin-top:20px;
-    margin-bottom: 80px;
-  }
-
-  #game button.restart{
-    font-size: 3em;
-    color: white;
-    box-shadow: -3px 13px 71px;
-  }
-
-  #game button.restart:focus{
-    box-shadow: -3px 13px 71px yellow;
-  }
+#game button.restart{
+  font-family: 'Rock Salt', cursive;
+  width:100%;
+  margin-top: 1em;;
+  font-size: 2.5em;
+  color: rgba(230,230,150,1);;
+  background: transparent;
+  text-shadow: 1px 4px #FF0000;
 }
+
+/* #game button.restart:focus{ */
+/*   box-shadow: -3px 13px 71px yellow; */
+/* } */
