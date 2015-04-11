@@ -10,4 +10,10 @@
     font-size:2.5em;
     margin-left: -20px;
   }
+
+  .alert{
+    margin-left: -34px;
+    height: 21em;
+    width: 21em;
+  }
 }

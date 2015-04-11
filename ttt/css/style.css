@@ -69,6 +69,20 @@ button.x:after {
     margin-left: -25px;
     /* height: 1.7em; */
   }
+
+  .alert{
+    margin-left: -44px;
+    height: 18em;
+    width: 18em;
+  }
+
+  .finalMessage{
+    font-size: 2em;
+    height: 3em;
+    font-family: 'Amatic SC', cursive;
+    color: white;
+    text-align: center;
+  }
 }
 
 /* iPhone 6 and Plus - Nexus 5 */
@@ -100,6 +114,7 @@ button.x:after {
   color: rgba(230,230,150,1);;
   background: transparent;
   text-shadow: 1px 4px #FF0000;
+  border: 0;
 }
 
 #game button.restart:focus{

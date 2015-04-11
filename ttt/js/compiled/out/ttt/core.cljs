@@ -10,7 +10,7 @@
 (enable-console-print!)
 
 ;; game logic
-(defn new-board [] "---------")
+(defn new-board [] "xxx------")
 
 (defn matches [matcher board]
   (map first (filter #(= (second %) matcher)
