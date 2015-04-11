@@ -11,7 +11,6 @@
 
 ;; game logic
 (defn new-board [] "---------")
-(defn new-board [] "xxoooxx-o")
 
 (defn matches [matcher board]
   (map first (filter #(= (second %) matcher)
@@ -81,11 +80,12 @@
     (do
       (dom/div nil
         ;; (if (not (win? (:board data)))
-        ;; (if (win? (:board data))
-        ;;   (do
-        ;;       (dom/div #js {:className "alert"}
-        ;;               (dom/div #js {:className "finalMessage animated tada"} (str (if (= "x" (:player data)) (rand-nth ["What a shame!" "SuperBot wins!" "It was easy!"]) (rand-nth ["Adrian, we did it!" "This is happiness!" "Sweet!"]))))
-        ;;               (dom/button #js {:className "restart animated infinite pulse" :onClick #(om/set-state! owner :board (restart data))} "Play Again!"))))
+        (if (win? (:board data))
+          (do
+            (dom/div #js {:className "col-xs-12"}
+                     (dom/div #js {:className "alert"}
+                              (dom/div #js {:className "finalMessage animated tada"} (str (if (= "x" (:player data)) (rand-nth ["What a shame!" "SuperBot wins!" "It was easy!"]) (rand-nth ["Adrian, we did it!" "This is happiness!" "Sweet!"]))))
+                              (dom/button #js {:className "restart animated infinite pulse" :onClick #(om/set-state! owner :board (restart data))} "Play Again!")))))
         (if (draw? (:board data))
           (do
             (dom/div #js {:className "col-xs-12"}
