@@ -71,7 +71,14 @@
   (let [board (if (= "x" (:player data))
                 (do
                   (swap! app-state assoc :player "x")
-                  (rand-nth ["o--------" "------o--" "----o----" "--o------" "--------o"]))
+                  (rand-nth ["o--------"
+                             "-o-------"
+                             "--o------"
+                             "---o-----"
+                             "----o----"
+                             "------o--"
+                             "-------o-"
+                             "--------o"]))
                 (new-board))]
     (println board)
     (swap! app-state assoc :board board)))

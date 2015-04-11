@@ -20,6 +20,7 @@ h1{
   font-size: 40px;
   text-align: left;
   border: 5px solid transparent;
+  outline: none;
 }
 
 button.o:after {
@@ -51,6 +52,7 @@ button.x:after {
   text-align: center;
 }
 
+/* iPhone 4s */
 @media (max-width: 320px) {
   #game button.xo{
     margin-left: -25px;
