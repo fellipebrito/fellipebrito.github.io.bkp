@@ -10,7 +10,7 @@
 (enable-console-print!)
 
 ;; game logic
-(defn new-board [] "xxx------")
+(defn new-board [] "---------")
 
 (defn matches [matcher board]
   (map first (filter #(= (second %) matcher)
@@ -90,14 +90,14 @@
         (if (win? (:board data))
           (do
             (dom/div #js {:className "col-xs-12"}
-                     (dom/div #js {:className "alert"}
-                              (dom/div #js {:className "finalMessage animated tada"} (str (if (= "x" (:player data)) (rand-nth ["What a shame!" "SuperBot wins!" "It was easy!"]) (rand-nth ["Adrian, we did it!" "This is happiness!" "Sweet!"]))))
+                     (dom/div #js {:className (str "alert " (if (= "x" (:player data)) "lost" "win"))}
+                              (dom/div #js {:className (str "finalMessage animated tada")} (str (if (= "x" (:player data)) "You lost" "You Win!!!")))
                               (dom/button #js {:className "restart animated infinite pulse" :onClick #(om/set-state! owner :board (restart data))} "Play Again!")))))
         (if (draw? (:board data))
           (do
             (dom/div #js {:className "col-xs-12"}
                      (dom/div #js {:className "alert"}
-                              (dom/div #js {:className "finalMessage animated tada"} (str (rand-nth ["Win or Win. There is no Draw" "I will kick your butt in the next one" "Boooooring"])))
+                              (dom/div #js {:className "finalMessage animated tada"} (str "It's a Draw"))
                               (dom/button #js {:className "restart animated infinite pulse" :onClick #(om/set-state! owner :board (restart data))} "Play Again!")))))
         (dom/div #js {:className "col-xs-4"}
                 (dom/button #js {:className (str "xo " (subs (:board data) 0 1))

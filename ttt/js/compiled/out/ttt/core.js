@@ -9,11 +9,11 @@ goog.require('om.core');
 goog.require('clojure.string');
 cljs.core.enable_console_print_BANG_.call(null);
 ttt.core.new_board = (function new_board(){
-return "xxx------";
+return "---------";
 });
 ttt.core.matches = (function matches(matcher,board){
-return cljs.core.map.call(null,cljs.core.first,cljs.core.filter.call(null,(function (p1__19426_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.second.call(null,p1__19426_SHARP_),matcher);
+return cljs.core.map.call(null,cljs.core.first,cljs.core.filter.call(null,(function (p1__19776_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.second.call(null,p1__19776_SHARP_),matcher);
 }),cljs.core.map_indexed.call(null,cljs.core.vector,board)));
 });
 ttt.core.winners = new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(3),(6)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(1),(4),(7)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(2),(5),(8)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(4),(8)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(2),(4),(6)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(1),(2)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(3),(4),(5)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(6),(7),(8)], null)], null);
@@ -43,16 +43,16 @@ if(((6) < cljs.core.count.call(null,possible_moves))){
 return cljs.core.rand_nth.call(null,corners_and_center);
 } else {
 var win_move = cljs.core.filter.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__19427_SHARP_){
-return !((p1__19427_SHARP_ == null));
+return (function (p1__19777_SHARP_){
+return !((p1__19777_SHARP_ == null));
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
 return (function (y){
 return cljs.core.some.call(null,y,possible_moves);
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.filter.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__19428_SHARP_){
-return !((p1__19428_SHARP_ == null));
+return (function (p1__19778_SHARP_){
+return !((p1__19778_SHARP_ == null));
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (x_moves,o_moves,possible_moves,corners_and_center){
 return (function (x){
@@ -64,16 +64,16 @@ return null;
 });})(x_moves,o_moves,possible_moves,corners_and_center))
 ,ttt.core.winners))));
 var block_move = cljs.core.filter.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__19429_SHARP_){
-return !((p1__19429_SHARP_ == null));
+return (function (p1__19779_SHARP_){
+return !((p1__19779_SHARP_ == null));
 });})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
 return (function (y){
 return cljs.core.some.call(null,y,possible_moves);
 });})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.filter.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
-return (function (p1__19430_SHARP_){
-return !((p1__19430_SHARP_ == null));
+return (function (p1__19780_SHARP_){
+return !((p1__19780_SHARP_ == null));
 });})(win_move,x_moves,o_moves,possible_moves,corners_and_center))
 ,cljs.core.map.call(null,((function (win_move,x_moves,o_moves,possible_moves,corners_and_center){
 return (function (x){
@@ -125,9 +125,9 @@ cljs.core.println.call(null,board);
 return cljs.core.swap_BANG_.call(null,ttt.core.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"board","board",-1907017633),board);
 });
 ttt.core.show_board = (function show_board(owner,data){
-return React.DOM.div(null,(cljs.core.truth_(ttt.core.win_QMARK_.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data)))?React.DOM.div({"className": "col-xs-12"},React.DOM.div({"className": "alert"},React.DOM.div({"className": "finalMessage animated tada"},[cljs.core.str(((cljs.core._EQ_.call(null,"x",new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data)))?cljs.core.rand_nth.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["What a shame!","SuperBot wins!","It was easy!"], null)):cljs.core.rand_nth.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Adrian, we did it!","This is happiness!","Sweet!"], null))))].join('')),React.DOM.button({"onClick": (function (){
+return React.DOM.div(null,(cljs.core.truth_(ttt.core.win_QMARK_.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data)))?React.DOM.div({"className": "col-xs-12"},React.DOM.div({"className": [cljs.core.str("alert "),cljs.core.str(((cljs.core._EQ_.call(null,"x",new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data)))?"lost":"win"))].join('')},React.DOM.div({"className": [cljs.core.str("finalMessage animated tada")].join('')},[cljs.core.str(((cljs.core._EQ_.call(null,"x",new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data)))?"You lost":"You Win!!!"))].join('')),React.DOM.button({"onClick": (function (){
 return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.restart.call(null,data));
-}), "className": "restart animated infinite pulse"},"Play Again!"))):null),((ttt.core.draw_QMARK_.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data)))?React.DOM.div({"className": "col-xs-12"},React.DOM.div({"className": "alert"},React.DOM.div({"className": "finalMessage animated tada"},[cljs.core.str(cljs.core.rand_nth.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Win or Win. There is no Draw","I will kick your butt in the next one","Boooooring"], null)))].join('')),React.DOM.button({"onClick": (function (){
+}), "className": "restart animated infinite pulse"},"Play Again!"))):null),((ttt.core.draw_QMARK_.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data)))?React.DOM.div({"className": "col-xs-12"},React.DOM.div({"className": "alert"},React.DOM.div({"className": "finalMessage animated tada"},[cljs.core.str("It's a Draw")].join('')),React.DOM.button({"onClick": (function (){
 return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.restart.call(null,data));
 }), "className": "restart animated infinite pulse"},"Play Again!"))):null),React.DOM.div({"className": "col-xs-4"},React.DOM.button({"onClick": (function (){
 return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board","board",-1907017633),ttt.core.move.call(null,[cljs.core.str(new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data))].join(''),(0),new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(data),true));
@@ -150,68 +150,68 @@ return om.core.set_state_BANG_.call(null,owner,new cljs.core.Keyword(null,"board
 }), "className": [cljs.core.str("xo "),cljs.core.str(cljs.core.subs.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(data),(8),(9)))].join('')})));
 });
 ttt.core.game = (function game(data,owner){
-if(typeof ttt.core.t19436 !== 'undefined'){
+if(typeof ttt.core.t19786 !== 'undefined'){
 } else {
 
 /**
 * @constructor
 */
-ttt.core.t19436 = (function (owner,data,game,meta19437){
+ttt.core.t19786 = (function (owner,data,game,meta19787){
 this.owner = owner;
 this.data = data;
 this.game = game;
-this.meta19437 = meta19437;
+this.meta19787 = meta19787;
 this.cljs$lang$protocol_mask$partition1$ = 0;
 this.cljs$lang$protocol_mask$partition0$ = 393216;
 })
-ttt.core.t19436.prototype.om$core$IRenderState$ = true;
+ttt.core.t19786.prototype.om$core$IRenderState$ = true;
 
-ttt.core.t19436.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__19439){
+ttt.core.t19786.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__19789){
 var self__ = this;
-var map__19440 = p__19439;
-var map__19440__$1 = ((cljs.core.seq_QMARK_.call(null,map__19440))?cljs.core.apply.call(null,cljs.core.hash_map,map__19440):map__19440);
+var map__19790 = p__19789;
+var map__19790__$1 = ((cljs.core.seq_QMARK_.call(null,map__19790))?cljs.core.apply.call(null,cljs.core.hash_map,map__19790):map__19790);
 var ___$1 = this;
 return ttt.core.show_board.call(null,self__.owner,self__.data);
 });
 
-ttt.core.t19436.prototype.om$core$IInitState$ = true;
+ttt.core.t19786.prototype.om$core$IInitState$ = true;
 
-ttt.core.t19436.prototype.om$core$IInitState$init_state$arity$1 = (function (_){
+ttt.core.t19786.prototype.om$core$IInitState$init_state$arity$1 = (function (_){
 var self__ = this;
 var ___$1 = this;
 return cljs.core.PersistentArrayMap.EMPTY;
 });
 
-ttt.core.t19436.prototype.om$core$ICheckState$ = true;
+ttt.core.t19786.prototype.om$core$ICheckState$ = true;
 
-ttt.core.t19436.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_19438){
+ttt.core.t19786.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_19788){
 var self__ = this;
-var _19438__$1 = this;
-return self__.meta19437;
+var _19788__$1 = this;
+return self__.meta19787;
 });
 
-ttt.core.t19436.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_19438,meta19437__$1){
+ttt.core.t19786.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_19788,meta19787__$1){
 var self__ = this;
-var _19438__$1 = this;
-return (new ttt.core.t19436(self__.owner,self__.data,self__.game,meta19437__$1));
+var _19788__$1 = this;
+return (new ttt.core.t19786(self__.owner,self__.data,self__.game,meta19787__$1));
 });
 
-ttt.core.t19436.cljs$lang$type = true;
+ttt.core.t19786.cljs$lang$type = true;
 
-ttt.core.t19436.cljs$lang$ctorStr = "ttt.core/t19436";
+ttt.core.t19786.cljs$lang$ctorStr = "ttt.core/t19786";
 
-ttt.core.t19436.cljs$lang$ctorPrWriter = (function (this__16732__auto__,writer__16733__auto__,opt__16734__auto__){
-return cljs.core._write.call(null,writer__16733__auto__,"ttt.core/t19436");
+ttt.core.t19786.cljs$lang$ctorPrWriter = (function (this__16732__auto__,writer__16733__auto__,opt__16734__auto__){
+return cljs.core._write.call(null,writer__16733__auto__,"ttt.core/t19786");
 });
 
-ttt.core.__GT_t19436 = (function __GT_t19436(owner__$1,data__$1,game__$1,meta19437){
-return (new ttt.core.t19436(owner__$1,data__$1,game__$1,meta19437));
+ttt.core.__GT_t19786 = (function __GT_t19786(owner__$1,data__$1,game__$1,meta19787){
+return (new ttt.core.t19786(owner__$1,data__$1,game__$1,meta19787));
 });
 
 }
 
-return (new ttt.core.t19436(owner,data,game,cljs.core.PersistentArrayMap.EMPTY));
+return (new ttt.core.t19786(owner,data,game,cljs.core.PersistentArrayMap.EMPTY));
 });
 om.core.root.call(null,ttt.core.game,ttt.core.app_state,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"target","target",253001721),document.getElementById("game")], null));
 
-//# sourceMappingURL=core.js.map?rel=1428725019966
+//# sourceMappingURL=core.js.map?rel=1428729664520
