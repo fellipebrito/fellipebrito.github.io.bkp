@@ -93,3 +93,7 @@ button.x:after {
 #game button.restart:focus{
   text-shadow: 0;
 }
+
+audio {
+  display: none;
+}
